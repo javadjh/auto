@@ -19,6 +19,7 @@ public class ReceiveLetterVM extends BaseObservable {
     private MutableLiveData<ReceiveLetterRoot> receiveLetterRootMutableLiveData = new MutableLiveData<>();
     private ReceiveLetterRoot receiveLetterRoot;
     private String nameAndLastName;
+    private String role;
 
     //init VM
     public ReceiveLetterVM(Context context) {
@@ -30,6 +31,7 @@ public class ReceiveLetterVM extends BaseObservable {
     private void setName() {
         SharedPreferences sharedPreferences = context.getSharedPreferences("information",Context.MODE_PRIVATE );
         nameAndLastName = sharedPreferences.getString("fullName","");
+        role = sharedPreferences.getString("rolse","");
 
     }
 
@@ -43,6 +45,16 @@ public class ReceiveLetterVM extends BaseObservable {
     }
 
     //getter and setter
+    @Bindable
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+        notifyPropertyChanged(BR.role);
+    }
+
     public Context getContext() {
         return context;
     }

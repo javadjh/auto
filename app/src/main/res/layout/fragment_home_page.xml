@@ -67,7 +67,7 @@
                                 android:gravity="center|start"
                                 android:layout_gravity="center"
                                 android:fontFamily="@font/vazir"
-                                android:text="@{ReceiveLetterVM.data.list.size() + ``}"
+                                android:text="@{ReceiveLetterVM.nameAndLastName}"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="50"/>
@@ -77,7 +77,7 @@
                                 android:gravity="center|start"
                                 android:layout_gravity="center"
                                 android:fontFamily="@font/vazir"
-                                android:text="سمت : برنامه نویس اندروید"
+                                android:text="@{ReceiveLetterVM.role}"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="50"/>
