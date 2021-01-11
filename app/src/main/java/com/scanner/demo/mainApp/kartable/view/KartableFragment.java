@@ -1,11 +1,7 @@
 package com.scanner.demo.mainApp.kartable.view;
 
-import android.app.Activity;
-import android.app.FragmentManager;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -13,20 +9,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
-import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.android.material.tabs.TabLayout;
 import com.scanner.demo.R;
 import com.scanner.demo.databinding.FragmentKartableBinding;
-import com.scanner.demo.mainApp.homePage.view.HomePageFragmentDirections;
 import com.scanner.demo.mainApp.kartable.adapter.SliderAdapter;
-
-import java.util.Objects;
 
 public class KartableFragment extends Fragment {
     FragmentKartableBinding fragmentKartableBinding;
@@ -50,7 +42,17 @@ public class KartableFragment extends Fragment {
         fragmentKartableBinding.setKartableFragment(this);
         fragmentKartableBinding.kartableViewPager.setAdapter(new SliderAdapter(requireActivity().getSupportFragmentManager()));
         fragmentKartableBinding.tabBarActionBar.setupWithViewPager(fragmentKartableBinding.kartableViewPager);
-        fragmentKartableBinding.kartableViewPager.setCurrentItem(2);
+        if(getArguments() != null) {
+            try {
+                fragmentKartableBinding.kartableViewPager.setCurrentItem(getArguments().getInt("currentPage"));
+            }catch (Exception ex){
+                fragmentKartableBinding.kartableViewPager.setCurrentItem(2);
+            }
+
+        }else{
+            fragmentKartableBinding.kartableViewPager.setCurrentItem(2);
+        }
+        //
     }
 
     @Override

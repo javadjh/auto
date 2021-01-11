@@ -1,6 +1,7 @@
 package com.scanner.demo.mainApp.homePage.viewmodel;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -17,11 +18,19 @@ public class ReceiveLetterVM extends BaseObservable {
     private Context context;
     private MutableLiveData<ReceiveLetterRoot> receiveLetterRootMutableLiveData = new MutableLiveData<>();
     private ReceiveLetterRoot receiveLetterRoot;
+    private String nameAndLastName;
 
     //init VM
     public ReceiveLetterVM(Context context) {
         this.context = context;
         getReceivedLetter();
+        setName();
+    }
+
+    private void setName() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("information",Context.MODE_PRIVATE );
+        nameAndLastName = sharedPreferences.getString("fullName","");
+
     }
 
     //logic
@@ -29,11 +38,35 @@ public class ReceiveLetterVM extends BaseObservable {
     //setPageData
     public void getReceivedLetter(){
         letterService letterService = new letterService(context);
-        receiveLetterRootMutableLiveData = letterService.getReceivedLetter(null, null, null, null, null, null, 1, 100);
+        receiveLetterRootMutableLiveData = letterService.getReceivedLetter(null, null, null, null, null, null, null);
         notifyPropertyChanged(BR.data);
     }
 
     //getter and setter
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+    public ReceiveLetterRoot getReceiveLetterRoot() {
+        return receiveLetterRoot;
+    }
+
+    public void setReceiveLetterRoot(ReceiveLetterRoot receiveLetterRoot) {
+        this.receiveLetterRoot = receiveLetterRoot;
+    }
+    @Bindable
+    public String getNameAndLastName() {
+        return nameAndLastName;
+    }
+
+    public void setNameAndLastName(String nameAndLastName) {
+        this.nameAndLastName = nameAndLastName;
+        notifyPropertyChanged(BR.nameAndLastName);
+    }
 
     public MutableLiveData<ReceiveLetterRoot> getReceiveLetterRootMutableLiveData() {
         return receiveLetterRootMutableLiveData;

@@ -28,13 +28,13 @@ public interface APIInterface {
     Single<LoginModelResponseRoot> login(@Body LoginModelBody loginModelBody);
 
     @GET("/api/v2/letter/received")
-    Single<ReceiveLetterRoot> getReceive(@Query("Title") String Title, @Query("SenderName") String SenderName, @Query("Urgency") String Urgency, @Query("From") String From, @Query("To") String To, @Query("NotObserved") Boolean NotObserved, @Query("PageNumber") Integer PageNumber, @Query("PageSize") Integer PageSize);
+    Single<ReceiveLetterRoot> getReceive(@Query("Title") String Title, @Query("SenderName") String SenderName, @Query("Urgency") String Urgency, @Query("From") String From, @Query("To") String To, @Query("NotObserved") Boolean NotObserved, @Query("PageNumber") Integer PageNumber, @Query("PageSize") Integer PageSize,@Query("Confidentiality") String Confidentiality);
 
     @GET("/api/v2/letter/{id}")
     Single<LetterSingleRoot> getLetterSingle(@Path("id") String id);
 
     @GET("/api/v2/letter/sent")
-    Single<ReceiveLetterRoot> getSend(@Query("Title") String Title, @Query("ReceiverName") String ReceiverName, @Query("Urgency") String Urgency, @Query("From") String From, @Query("To") String To, @Query("PageNumber") Integer PageNumber, @Query("PageSize") Integer PageSize);
+    Single<ReceiveLetterRoot> getSend(@Query("Title") String Title, @Query("ReceiverRole") String ReceiverRole, @Query("ReceiverName") String ReceiverName, @Query("Confidentiality") String Confidentiality, @Query("Urgency") String Urgency, @Query("From") String From, @Query("To") String To,@Query("PageNumber") int PageNumber,@Query("PageSize") int PageSize );
 
     @GET("/api/v2/letter/draft")
     Single<DraftResponseRoot> getDraft(@Query("PageNumber") int PageNumber, @Query("PageSize") int PageSize);

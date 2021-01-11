@@ -38,7 +38,9 @@ public class MainApp extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(navController.getCurrentDestination().getId()==R.id.letterSingleFragment){
+        if(navController.getCurrentDestination().getId()==R.id.letterSingleFragment ||
+        navController.getCurrentDestination().getId()==R.id.upsertLetterFragment||
+        navController.getCurrentDestination().getId()==R.id.upsertLetterStepTwoFragment){
             super.onBackPressed();
         }else{
             finish();

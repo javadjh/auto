@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@id/filterSend"
                 android:id="@+id/recySendLetterKartable"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="vertical"
@@ -25,6 +26,19 @@
                 android:paddingTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
+            <TextView
+                android:id="@+id/filterSend"
+                android:onClick="@{() -> SendKartableVM.sendToSearch(filterSend)}"
+                android:textSize="@dimen/mediumSize"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:background="@color/blue"
+                android:fontFamily="@font/vazir"
+                android:text="@string/recieveFilter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </RelativeLayout>
     </FrameLayout>
 </layout>

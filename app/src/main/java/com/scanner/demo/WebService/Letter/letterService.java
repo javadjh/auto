@@ -36,9 +36,9 @@ public class letterService extends ViewModel {
     }
 
     //getReceivedLetter Service
-    public MutableLiveData<ReceiveLetterRoot> getReceivedLetter(String Title, String SenderName, String Urgency, String From, String To, Boolean NotObserved, Integer PageNumber, Integer PageSize){
+    public MutableLiveData<ReceiveLetterRoot> getReceivedLetter(String title,String senderName,String urgency,String from,String to,Boolean notObserved,String confidentiality){
         apiClient = new APIClient();
-        compositeDisposable.add(apiClient.RECEIVE_LETTER(Title, SenderName, Urgency, From, To)
+        compositeDisposable.add(apiClient.RECEIVE_LETTER(title, senderName, urgency, from, to, notObserved,confidentiality)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<ReceiveLetterRoot>() {
@@ -82,9 +82,9 @@ public class letterService extends ViewModel {
     }
 
     //getSendLetter Service
-    public MutableLiveData<ReceiveLetterRoot> getSendLetter(String Title, String ReceiverName, String Urgency, String From, String To, Integer PageNumber, Integer PageSize){
+    public MutableLiveData<ReceiveLetterRoot> getSendLetter(String title, String receiverRole, String receiverName, String confidentiality, String urgency,String from,String to){
         apiClient = new APIClient();
-        compositeDisposable.add(apiClient.SEND_LETTER(Title, ReceiverName, Urgency, From, To)
+        compositeDisposable.add(apiClient.SEND_LETTER(title, receiverRole, receiverName, confidentiality, urgency,from,to)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<ReceiveLetterRoot>() {

@@ -97,6 +97,9 @@
         <action
             android:id="@+id/action_fileManegerFragment_to_mainActivity2"
             app:destination="@id/mainActivity" />
+        <action
+            android:id="@+id/action_fileManegerFragment_to_showFileFragment"
+            app:destination="@id/showFileFragment" />
     </fragment>
     <fragment
         android:id="@+id/kartableFragment"
@@ -127,6 +130,12 @@
         <action
             android:id="@+id/action_kartableFragment_to_upsertLetterFragment"
             app:destination="@id/upsertLetterFragment" />
+        <action
+            android:id="@+id/action_kartableFragment_to_receivedSearchFragment"
+            app:destination="@id/receivedSearchFragment" />
+        <action
+            android:id="@+id/action_kartableFragment_to_sendSearchFragment"
+            app:destination="@id/sendSearchFragment" />
     </fragment>
     <fragment
         android:id="@+id/letterSingleFragment"
@@ -142,6 +151,9 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/homePageFragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_letterSingleFragment_to_showFileFragment"
+            app:destination="@id/showFileFragment" />
     </fragment>
     <fragment
         android:id="@+id/upsertLetterFragment"
@@ -166,5 +178,45 @@
         <action
             android:id="@+id/action_upsertLetterStepTwoFragment_to_mainActivity"
             app:destination="@id/mainActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/showFileFragment"
+        android:name="com.scanner.demo.mainApp.showFile.view.ShowFileFragment"
+        android:label="ShowFileFragment" >
+        <action
+            android:id="@+id/action_showFileFragment_to_fileManegerFragment"
+            app:destination="@id/fileManegerFragment" />
+        <action
+            android:id="@+id/action_showFileFragment_to_letterSingleFragment"
+            app:destination="@id/letterSingleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/receiveKartableFragment"
+        android:name="com.scanner.demo.mainApp.kartable.view.ReceiveKartableFragment"
+        android:label="fragment_receive_kartable"
+        tools:layout="@layout/fragment_receive_kartable" >
+        <action
+            android:id="@+id/action_receiveKartableFragment_to_receivedSearchFragment"
+            app:destination="@id/receivedSearchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/receivedSearchFragment"
+        android:name="com.scanner.demo.mainApp.kartable.searchKartable.view.ReceivedSearchFragment"
+        android:label="ReceivedSearchFragment" >
+        <action
+            android:id="@+id/action_receivedSearchFragment_to_receiveKartableFragment"
+            app:destination="@id/receiveKartableFragment" />
+        <action
+            android:id="@+id/action_receivedSearchFragment_to_kartableFragment"
+            app:destination="@id/kartableFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sendSearchFragment"
+        android:name="com.scanner.demo.mainApp.kartable.searchKartable.view.SendSearchFragment"
+        android:label="fragment_send_search"
+        tools:layout="@layout/fragment_send_search" >
+        <action
+            android:id="@+id/action_sendSearchFragment_to_kartableFragment"
+            app:destination="@id/kartableFragment" />
     </fragment>
 </navigation>

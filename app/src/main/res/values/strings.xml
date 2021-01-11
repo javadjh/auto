@@ -25,4 +25,17 @@
     <string name="loading">در حال پردازش</string>
     <string name="searchInFile">جست و جو در فایل ها</string>
     <string name="ileName">ام فایل در این قسمت نوشته میشود</string>
+    <string name="fileNAme">نام فایل در اینق سمت نوشته میشود</string>
+    <string name="doFilter">اعمال فیلتر</string>
+    <string name="recieveFilter">فیلتر در دریافتی ها</string>
+    <string name="ToDate">تا تاریخ</string>
+    <string name="fromDate">از تاریخ</string>
+    <string name="senderRole">سمت ارسال کننده</string>
+    <string name="senderName">نام ارسال کننده</string>
+    <string name="confidentalityLevel">سطح محرمانگی نامه</string>
+    <string name="sortBy">مرتب سازی بر اساس</string>
+    <string name="urgentType">نوع نامه(فوری عادی و...)</string>
+    <string name="searchInTitle">جست و جو در عنوان ها</string>
+    <string name="eceiverRole">سمت دریافت کننده</string>
+    <string name="receiverName">نام دریافت کننده</string>
 </resources>

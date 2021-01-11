@@ -53,14 +53,14 @@ public class APIClient  {
     public Single<LoginModelResponseRoot> LOGIN(LoginModelBody loginModelBody){
         return apiInterface.login(loginModelBody);
     }
-    public Single<ReceiveLetterRoot> RECEIVE_LETTER(String searchValueTitle, String searchSenderName, String urgent, String fromDate, String toDate){
-        return apiInterface.getReceive(searchValueTitle,searchSenderName,urgent,fromDate,toDate,null,1,50);
+    public Single<ReceiveLetterRoot> RECEIVE_LETTER(String title,String senderName,String urgency,String from,String to,Boolean notObserved ,String confidentiality){
+        return apiInterface.getReceive(title, senderName, urgency, from, to, notObserved, 1, 100,confidentiality);
     }
     public Single<LetterSingleRoot> LETTER_SINGLE(String id){
         return apiInterface.getLetterSingle(id);
     }
-    public Single<ReceiveLetterRoot> SEND_LETTER(String searchValueTitle, String searchReceiverName, String urgent, String fromDate, String toDate){
-        return apiInterface.getSend(searchValueTitle,searchReceiverName,urgent,fromDate,toDate,1,50);
+    public Single<ReceiveLetterRoot> SEND_LETTER(String title, String receiverRole, String receiverName, String confidentiality, String urgency,String from,String to){
+        return apiInterface.getSend(title, receiverRole, receiverName, confidentiality, urgency,from,to,1,100);
     }
     public Single<DraftResponseRoot> DRAFT_LETTER(){
         return apiInterface.getDraft(1,50);

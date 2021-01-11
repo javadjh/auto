@@ -9,13 +9,18 @@
             type="com.scanner.demo.mainApp.kartable.viewmodel.ReceiveKartableVM" />
     </data>
     <FrameLayout
+        android:layoutDirection="rtl"
+        android:textDirection="rtl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RelativeLayout
+            android:textDirection="rtl"
+            android:layoutDirection="rtl"
             android:background="@color/black"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@id/filterReceive"
                 android:id="@+id/recyReceiveKartable"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="vertical"
@@ -25,6 +30,18 @@
                 android:paddingTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
+            <TextView
+                android:id="@+id/filterReceive"
+                android:textSize="@dimen/mediumSize"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:background="@color/blue"
+                android:fontFamily="@font/vazir"
+                android:text="@string/recieveFilter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </RelativeLayout>
     </FrameLayout>
 </layout>
