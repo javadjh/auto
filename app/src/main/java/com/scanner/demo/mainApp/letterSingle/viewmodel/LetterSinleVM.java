@@ -4,12 +4,16 @@ import android.content.Context;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
+import androidx.databinding.BindingAdapter;
 import androidx.lifecycle.MutableLiveData;
 
 import com.scanner.demo.BR;
-import com.scanner.demo.WebService.Letter.letterService;
+import com.scanner.demo.WebService.LetterService.letterService;
 import com.scanner.demo.mainApp.letterSingle.model.LetterSingleRoot;
 import com.scanner.demo.mainApp.letterSingle.model.data;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class LetterSinleVM extends BaseObservable {
     //base variable
@@ -30,13 +34,18 @@ public class LetterSinleVM extends BaseObservable {
         getSinlgeData();
     }
 
-
+    //logic
     private void getSinlgeData() {
         letterService letterService = new letterService(context);
         singleRootMutableLiveData = letterService.getSingleLetter(letterId);
         notifyPropertyChanged(BR.singleRootMutableLiveData);
     }
 
+    //setProfile
+    @BindingAdapter("android:setPrifileSingleLetter")
+    public static void setProfileImage(CircleImageView circleImageView,String url) {
+        Picasso.get().load(url).into(circleImageView);
+    }
 
     //getter and setter
     @Bindable

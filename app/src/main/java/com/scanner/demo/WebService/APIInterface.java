@@ -8,6 +8,7 @@ import com.scanner.demo.mainApp.kartable.model.DraftResponseRoot;
 import com.scanner.demo.mainApp.kartable.upsertLetter.model.UsersResponseRoot;
 import com.scanner.demo.mainApp.letterSingle.model.LetterSingleRoot;
 
+import java.io.File;
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Single;
@@ -48,4 +49,7 @@ public interface APIInterface {
     @Multipart
     @POST("/api/v2/file/upload")
     Call<String> sendFile(@Part MultipartBody.Part bodyFile);
+
+    @GET("/api/v2/file/download/{id}")
+    Single<File> getFile(@Path("id") String id);
 }

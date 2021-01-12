@@ -5,7 +5,7 @@ import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import androidx.lifecycle.MutableLiveData;
 import com.scanner.demo.BR;
-import com.scanner.demo.WebService.Letter.letterService;
+import com.scanner.demo.WebService.LetterService.letterService;
 import com.scanner.demo.mainApp.kartable.model.DraftResponseRoot;
 
 public class DraftKartableVM extends BaseObservable {

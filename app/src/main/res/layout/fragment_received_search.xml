@@ -5,6 +5,9 @@
     tools:context=".mainApp.kartable.searchKartable.view.ReceivedSearchFragment">
     <data>
         <variable
+            name="onEventListtenerReceive"
+            type="com.scanner.demo.mainApp.kartable.searchKartable.model.OnEventListtenerReceive" />
+        <variable
             name="ReceivedSearchVM"
             type="com.scanner.demo.mainApp.kartable.searchKartable.viewmodel.ReceivedSearchVM" />
     </data>
@@ -88,7 +91,7 @@
                     android:background="@drawable/style_edit_text"
                     android:textColorHint="@color/gray"
                     android:fontFamily="@font/vazir"
-                    android:hint="@string/senderRole"
+                    android:hint="@{onEventListtenerReceive.senderRole!=null ? onEventListtenerReceive.senderRole : @string/senderRole}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text" />
@@ -104,7 +107,7 @@
                     android:background="@drawable/style_edit_text"
                     android:textColorHint="@color/gray"
                     android:fontFamily="@font/vazir"
-                    android:hint="@string/senderName"
+                    android:hint="@{onEventListtenerReceive.senderName!=null ? onEventListtenerReceive.senderName : @string/senderName}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <EditText
@@ -119,7 +122,7 @@
                     android:background="@drawable/style_edit_text"
                     android:textColorHint="@color/gray"
                     android:fontFamily="@font/vazir"
-                    android:hint="@string/searchInTitle"
+                    android:hint="@{onEventListtenerReceive.title!=null ? onEventListtenerReceive.title : @string/searchInTitle}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <androidx.cardview.widget.CardView
@@ -135,9 +138,8 @@
                         android:id="@+id/confidentalySpinner"
                         android:onClick="@{() ->ReceivedSearchVM.setConfidentailySpinner(confidentalySpinner,`جست و جو در محرمانگی`)}"
                         app:ms_hint_color="@color/gray"
-                        android:hint="جست و جو در محرمانگی"
                         android:fontFamily="@font/vazir"
-                        app:ms_hint="جست و جو در محرمانگی"
+                        android:hint="@{onEventListtenerReceive.confidentiality!=null ? onEventListtenerReceive.confidentiality : `جست و جو در محرمانگی`}"
                         android:textColor="@color/white"
                         android:textSize="@dimen/mediumSize"
                         android:textColorHint="@color/white"
@@ -163,7 +165,7 @@
                     android:layout_height="wrap_content">
                     <RadioButton
                         android:onClick="@{() -> ReceivedSearchVM.setObsearvRadio(observedRB,notObservedRB)}"
-
+                        android:checked="@{!onEventListtenerReceive.notObserved}"
                         tools:targetApi="lollipop"
                         android:elevation="@dimen/cardElevation"
                         android:paddingTop="10dp"
@@ -188,6 +190,7 @@
                         android:elevation="@dimen/cardElevation"
                         android:paddingTop="10dp"
                         android:id="@+id/notObservedRB"
+                        android:checked="@{onEventListtenerReceive.notObserved}"
                         android:paddingBottom="10dp"
                         android:layout_marginStart="10dp"
                         android:paddingEnd="10dp"
@@ -218,6 +221,7 @@
                         android:id="@+id/urgentRB"
                         tools:targetApi="lollipop"
                         android:elevation="@dimen/cardElevation"
+                        android:checked="@{onEventListtenerReceive.urgency.equals(`URGENT`)}"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
                         android:layout_marginEnd="10dp"
@@ -238,6 +242,8 @@
                         android:id="@+id/normalRB"
                         tools:targetApi="lollipop"
                         android:elevation="@dimen/cardElevation"
+                        android:checked="@{onEventListtenerReceive.urgency.equals(`NORMAL`)}"
+
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
                         android:layout_marginStart="10dp"

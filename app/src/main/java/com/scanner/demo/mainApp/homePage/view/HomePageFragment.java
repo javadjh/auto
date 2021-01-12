@@ -47,17 +47,18 @@ public class HomePageFragment extends Fragment {
                 receiveLetterVM.setData(receiveLetterRoot.getData());
                 fragmentHomePageBinding.setReceiveLetterVM(receiveLetterVM);
                 fragmentHomePageBinding.recyReceiveLetter.setAdapter(new ReceiveLetterCustomAdapter(receiveLetterRoot.getData().getList(), getContext(),
-                        new onClickLetterListener() {
-                            @Override
-                            public void onClickLetterListenetAdapter(String letterId) {
-                                Bundle bundle = new Bundle();
-                                bundle.putString("id",letterId);
-                                bundle.putString("key","home");
-                                Navigation.findNavController(fragmentHomePageBinding.recyReceiveLetter).navigate(R.id.action_homePageFragment_to_letterSingleFragment,bundle);
-                            }
+                        letterId -> {
+                            Bundle bundle = new Bundle();
+                            bundle.putString("id",letterId);
+                            bundle.putString("key","home");
+                            Navigation.findNavController(fragmentHomePageBinding.recyReceiveLetter).navigate(R.id.action_homePageFragment_to_letterSingleFragment,bundle);
                         }));
             }
         });
+        actionMenu();
+    }
+
+    private void actionMenu() {
         fragmentHomePageBinding.archiveIcon.setOnClickListener(View ->{
             NavDirections navDirections = HomePageFragmentDirections.actionHomePageFragmentToArchiveFragment();
             Navigation.findNavController(fragmentHomePageBinding.archiveIcon).navigate(navDirections);

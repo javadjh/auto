@@ -19,7 +19,7 @@ import com.scanner.demo.databinding.FragmentSendKartableBinding;
 import com.scanner.demo.mainApp.homePage.adapter.ReceiveLetterCustomAdapter;
 import com.scanner.demo.mainApp.homePage.clickEvent.onClickLetterListener;
 import com.scanner.demo.mainApp.homePage.model.ReceiveLetterRoot;
-import com.scanner.demo.mainApp.kartable.searchKartable.model.onEventListennerSend;
+import com.scanner.demo.mainApp.kartable.searchKartable.model.OnEventListennerSend;
 import com.scanner.demo.mainApp.kartable.viewmodel.SendKartableVM;
 
 public class SendKartableFragment extends Fragment {
@@ -36,13 +36,13 @@ public class SendKartableFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         sendKartableVM = new SendKartableVM(getContext(),
-                onEventListennerSend.title,
-                onEventListennerSend.receiverRole,
-                onEventListennerSend.receiverName,
-                onEventListennerSend.confidentiality,
-                onEventListennerSend.urgency,
-                onEventListennerSend.from,
-                onEventListennerSend.to);
+                OnEventListennerSend.title,
+                OnEventListennerSend.receiverRole,
+                OnEventListennerSend.receiverName,
+                OnEventListennerSend.confidentiality,
+                OnEventListennerSend.urgency,
+                OnEventListennerSend.from,
+                OnEventListennerSend.to);
         MutableLiveData<ReceiveLetterRoot> sendLetterRootMutableLiveData = sendKartableVM.getSendLetterRootMutableLiveData();
         sendLetterRootMutableLiveData.observe(getActivity(), new Observer<ReceiveLetterRoot>() {
             @Override

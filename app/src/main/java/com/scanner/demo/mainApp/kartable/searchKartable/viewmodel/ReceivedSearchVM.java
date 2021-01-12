@@ -15,7 +15,7 @@ import com.scanner.demo.BR;
 import com.scanner.demo.CustomClass.dateSorting;
 import com.scanner.demo.CustomClass.onClickEvent.onClickgetDate;
 import com.scanner.demo.R;
-import com.scanner.demo.mainApp.kartable.searchKartable.model.onEventListtenerReceive;
+import com.scanner.demo.mainApp.kartable.searchKartable.model.OnEventListtenerReceive;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,14 +106,14 @@ public class ReceivedSearchVM extends BaseObservable {
     }
 
     public void backToFragment(TextView button){
-        onEventListtenerReceive.title = title;
-        onEventListtenerReceive.senderRole = senderRole;
-        onEventListtenerReceive.senderName = senderName;
-        onEventListtenerReceive.urgency = urgency;
-        onEventListtenerReceive.confidentiality = confidentiality;
-        onEventListtenerReceive.from = from;
-        onEventListtenerReceive.to = to;
-        onEventListtenerReceive.notObserved = notObserved;
+        OnEventListtenerReceive.title = title;
+        OnEventListtenerReceive.senderRole = senderRole;
+        OnEventListtenerReceive.senderName = senderName;
+        OnEventListtenerReceive.urgency = urgency;
+        OnEventListtenerReceive.confidentiality = confidentiality;
+        OnEventListtenerReceive.from = from;
+        OnEventListtenerReceive.to = to;
+        OnEventListtenerReceive.notObserved = notObserved;
         Bundle bundle = new Bundle();
         bundle.putInt("currentPage",1);
         Navigation.findNavController(button).navigate(R.id.action_receivedSearchFragment_to_kartableFragment,bundle);

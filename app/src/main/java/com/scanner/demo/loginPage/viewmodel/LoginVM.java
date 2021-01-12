@@ -40,6 +40,7 @@ public class LoginVM extends BaseObservable {
                         editor.putString("userId",loginModelResponseRoot.getData().getUserId());
                         editor.putString("username",loginModelResponseRoot.getData().getUsername());
                         editor.putString("fullName",loginModelResponseRoot.getData().getFullName());
+                        editor.putString("thumbnail",loginModelResponseRoot.getData().getThumbnail());
                         editor.apply();
                         if(loginModelResponseRoot.getData().getToken().isEmpty()){
                             AlertDialog.showAlertDialog(context,"خطا در ورود","خطای ناشناخته رخ داده است");

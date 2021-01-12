@@ -1,8 +1,13 @@
 package com.scanner.demo.mainApp.homePage.model;
 
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+
+import com.scanner.demo.BR;
+
 import java.util.List;
 
-public class sender {
+public class sender extends BaseObservable {
     private String id;
     private String fullName;
     private String signature;
@@ -40,12 +45,13 @@ public class sender {
     public void setRoles(List<String> roles) {
         this.roles = roles;
     }
-
+    @Bindable
     public String getProfile() {
         return profile;
     }
 
     public void setProfile(String profile) {
         this.profile = profile;
+        notifyPropertyChanged(BR.profile);
     }
 }

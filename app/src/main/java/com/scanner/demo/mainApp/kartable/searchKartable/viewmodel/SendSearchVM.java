@@ -3,7 +3,6 @@ package com.scanner.demo.mainApp.kartable.searchKartable.viewmodel;
 import android.os.Bundle;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -14,8 +13,7 @@ import com.scanner.demo.BR;
 import com.scanner.demo.CustomClass.dateSorting;
 import com.scanner.demo.CustomClass.onClickEvent.onClickgetDate;
 import com.scanner.demo.R;
-import com.scanner.demo.mainApp.kartable.searchKartable.model.onEventListennerSend;
-import com.scanner.demo.mainApp.kartable.searchKartable.model.onEventListtenerReceive;
+import com.scanner.demo.mainApp.kartable.searchKartable.model.OnEventListennerSend;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,13 +80,13 @@ public class SendSearchVM extends BaseObservable {
     }
 
     public void goToSendKartable(TextView textView){
-        onEventListennerSend.title = title;
-        onEventListennerSend.receiverRole = receiverRole;
-        onEventListennerSend.receiverName = receiverName;
-        onEventListennerSend.urgency = urgency;
-        onEventListennerSend.confidentiality = confidentiality;
-        onEventListennerSend.from = from;
-        onEventListennerSend.to = to;
+        OnEventListennerSend.title = title;
+        OnEventListennerSend.receiverRole = receiverRole;
+        OnEventListennerSend.receiverName = receiverName;
+        OnEventListennerSend.urgency = urgency;
+        OnEventListennerSend.confidentiality = confidentiality;
+        OnEventListennerSend.from = from;
+        OnEventListennerSend.to = to;
         Bundle bundle = new Bundle();
         bundle.putInt("currentPage",2);
         Navigation.findNavController(textView).navigate(R.id.action_sendSearchFragment_to_kartableFragment,bundle);

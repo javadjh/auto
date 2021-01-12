@@ -8,6 +8,7 @@ import com.scanner.demo.mainApp.kartable.model.DraftResponseRoot;
 import com.scanner.demo.mainApp.kartable.upsertLetter.model.UsersResponseRoot;
 import com.scanner.demo.mainApp.letterSingle.model.LetterSingleRoot;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory;
@@ -73,6 +74,9 @@ public class APIClient  {
     }
     public Call<String> UPLOAD_FILE(MultipartBody.Part bodyFile){
         return apiInterface.sendFile(bodyFile);
+    }
+    public Single<File> GET_FILE(String id){
+        return apiInterface.getFile(id);
     }
 
 }

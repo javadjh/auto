@@ -41,6 +41,7 @@
                         android:layout_height="match_parent">
 
                         <de.hdodenhof.circleimageview.CircleImageView
+                            android:setImageProfile="@{ReceiveLetterVM.imageUrl}"
                             android:layoutDirection="rtl"
                             android:textDirection="rtl"
                             android:id="@+id/profile_image"

@@ -82,9 +82,5 @@ public class LetterSingleFragment extends Fragment {
         });
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Toast.makeText(getContext(), "text" + data.getStringExtra("key"), Toast.LENGTH_SHORT).show();
-    }
+
 }

@@ -10,9 +10,8 @@ import androidx.navigation.Navigation;
 
 import com.scanner.demo.BR;
 import com.scanner.demo.R;
-import com.scanner.demo.WebService.Letter.letterService;
+import com.scanner.demo.WebService.LetterService.letterService;
 import com.scanner.demo.mainApp.homePage.model.ReceiveLetterRoot;
-import com.scanner.demo.mainApp.homePage.model.data;
 
 public class SendKartableVM extends BaseObservable {
     //modelVariable

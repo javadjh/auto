@@ -5,11 +5,15 @@ import android.content.SharedPreferences;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
+import androidx.databinding.BindingAdapter;
 import androidx.lifecycle.MutableLiveData;
 
 import com.scanner.demo.BR;
 import com.scanner.demo.mainApp.homePage.model.ReceiveLetterRoot;
-import com.scanner.demo.WebService.Letter.letterService;
+import com.scanner.demo.WebService.LetterService.letterService;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ReceiveLetterVM extends BaseObservable {
     private com.scanner.demo.mainApp.homePage.model.data data;
@@ -20,19 +24,20 @@ public class ReceiveLetterVM extends BaseObservable {
     private ReceiveLetterRoot receiveLetterRoot;
     private String nameAndLastName;
     private String role;
+    private String imageUrl;
 
     //init VM
     public ReceiveLetterVM(Context context) {
         this.context = context;
         getReceivedLetter();
-        setName();
+        setValue();
     }
 
-    private void setName() {
+    private void setValue() {
         SharedPreferences sharedPreferences = context.getSharedPreferences("information",Context.MODE_PRIVATE );
         nameAndLastName = sharedPreferences.getString("fullName","");
         role = sharedPreferences.getString("rolse","");
-
+        imageUrl = sharedPreferences.getString("thumbnail","");
     }
 
     //logic
@@ -44,7 +49,23 @@ public class ReceiveLetterVM extends BaseObservable {
         notifyPropertyChanged(BR.data);
     }
 
+    //setImageForProfile
+    @BindingAdapter("android:setImageProfile")
+    public static void setProfile(CircleImageView circleImageView , String url){
+        Picasso.get().load(url).into(circleImageView);
+    }
+
     //getter and setter
+    @Bindable
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+        notifyPropertyChanged(BR.imageUrl);
+    }
+
     @Bindable
     public String getRole() {
         return role;

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.scanner.demo.CustomClass.fileTypePicker;
 import com.scanner.demo.R;
+import com.scanner.demo.WebService.FileService.FileService;
 import com.scanner.demo.databinding.ItemFileBinding;
 import com.scanner.demo.mainApp.fileManager.model.FileList;
 import com.squareup.picasso.Picasso;
@@ -43,6 +44,10 @@ public class FileUserCustomAdapter extends RecyclerView.Adapter<FileUserCustomAd
     public void onBindViewHolder(@NonNull viewHolderFileUser holder, int position) {
         holder.itemFileBinding.setFileList(fileListList.get(position));
         holder.itemFileBinding.imageFileType.setImageResource(fileTypePicker.fileTypePickerMethod(context,fileListList.get(position).getFileType()));
+        holder.itemFileBinding.cardDownloadFile.setOnClickListener(View->{
+            FileService fileService = new FileService(context);
+            fileService.getFile(fileListList.get(position).getId());
+        });
     }
 
     @Override

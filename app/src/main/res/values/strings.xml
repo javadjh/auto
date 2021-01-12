@@ -38,4 +38,6 @@
     <string name="searchInTitle">جست و جو در عنوان ها</string>
     <string name="eceiverRole">سمت دریافت کننده</string>
     <string name="receiverName">نام دریافت کننده</string>
+    <string name="name">محمد جواد حجتی</string>
+    <string name="date">1378/12/10 - 9:30</string>
 </resources>

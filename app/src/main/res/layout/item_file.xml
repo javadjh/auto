@@ -6,6 +6,7 @@
             type="com.scanner.demo.mainApp.fileManager.model.FileList" />
     </data>
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardDownloadFile"
         android:textDirection="rtl"
         android:layoutDirection="rtl"
         app:cardBackgroundColor="@color/lightBlack"
@@ -51,7 +52,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:textColor="@color/white"
-                android:text="@{FileList.formatFileSize + ` MB`}"
+                android:text="@{FileList.formatFileSize}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView

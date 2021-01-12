@@ -1,6 +1,12 @@
 package com.scanner.demo.mainApp.homePage.model;
 
+import androidx.databinding.BindingAdapter;
+
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ListLetter {
     private String id;
@@ -22,6 +28,12 @@ public class ListLetter {
     private receiver receiver;
     private java.util.List<copies> copies;
     private java.util.List<appendixes> appendixes;
+
+    //setProfile
+    @BindingAdapter("android:setProfileLetterList")
+    public static void setProfile(CircleImageView circleImageView,String url){
+        Picasso.get().load(url).into(circleImageView);
+    }
 
     public String getId() {
         return id;

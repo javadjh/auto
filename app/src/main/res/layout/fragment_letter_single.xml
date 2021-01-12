@@ -73,6 +73,7 @@
                             </LinearLayout>
                             <de.hdodenhof.circleimageview.CircleImageView
                                 android:layout_centerVertical="true"
+                                android:setPrifileSingleLetter="@{letterSinleVM.data.sender.profile}"
                                 android:layoutDirection="rtl"
                                 android:textDirection="rtl"
                                 android:id="@+id/profile_image"
@@ -384,11 +385,26 @@
                         android:layoutDirection="rtl"
                         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                         app:spanCount="2"
+                        tools:itemCount="1"
                         android:id="@+id/recyAppendix"
                         android:orientation="vertical"
                         tools:listitem="@layout/item_appendix"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:textDirection="rtl"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:layoutDirection="rtl"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:spanCount="2"
+                        tools:itemCount="1"
+                        android:id="@+id/recyTrack"
+                        android:orientation="vertical"
+                        tools:listitem="@layout/item_track"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
                 </LinearLayout>
             </androidx.core.widget.NestedScrollView>
 

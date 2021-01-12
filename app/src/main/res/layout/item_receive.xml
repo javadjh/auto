@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="actionMaker"
+            type="com.scanner.demo.mainApp.letterSingle.model.actionMaker" />
+    </data>
+    <androidx.cardview.widget.CardView app:cardCornerRadius="@dimen/cardRadius"
+        app:cardElevation="@dimen/cardElevation"
+        app:cardBackgroundColor="@color/black"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:textDirection="rtl"
+        android:layoutDirection="rtl"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="10dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+        <RelativeLayout
+            android:textDirection="rtl"
+            android:layoutDirection="rtl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_alignParentStart="true"
+                android:layoutDirection="rtl"
+                android:textDirection="rtl"
+                android:id="@+id/profile_image"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@drawable/del"
+                app:civ_border_width="1dp"
+                app:civ_border_color="@color/gray"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:weightSum="100"
+                android:layout_toEndOf="@id/profile_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:gravity="center"
+                    android:textSize="@dimen/titleSize"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/vazir"
+                    android:text="@{actionMaker.fullName}"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="50"
+                    android:layout_height="0dp"/>
+                <TextView
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:textSize="@dimen/mediumSize"
+                    android:textColor="@color/gray"
+                    android:fontFamily="@font/vazir"
+                    android:text="@{actionMaker.roles.get(0)}"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="50"
+                    android:layout_height="0dp"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

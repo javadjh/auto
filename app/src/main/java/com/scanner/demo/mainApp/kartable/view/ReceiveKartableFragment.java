@@ -19,7 +19,7 @@ import com.scanner.demo.databinding.FragmentReceiveKartableBinding;
 import com.scanner.demo.mainApp.homePage.adapter.ReceiveLetterCustomAdapter;
 import com.scanner.demo.mainApp.homePage.clickEvent.onClickLetterListener;
 import com.scanner.demo.mainApp.homePage.model.ReceiveLetterRoot;
-import com.scanner.demo.mainApp.kartable.searchKartable.model.onEventListtenerReceive;
+import com.scanner.demo.mainApp.kartable.searchKartable.model.OnEventListtenerReceive;
 import com.scanner.demo.mainApp.kartable.viewmodel.ReceiveKartableVM;
 
 public class ReceiveKartableFragment extends Fragment {
@@ -42,8 +42,8 @@ public class ReceiveKartableFragment extends Fragment {
     }
 
     private void getReceiveLetterKartable() {
-        receiveKartableVM = new ReceiveKartableVM(getContext(),onEventListtenerReceive.title,onEventListtenerReceive.senderName,
-                onEventListtenerReceive.urgency,onEventListtenerReceive.from,onEventListtenerReceive.to,onEventListtenerReceive.notObserved,onEventListtenerReceive.confidentiality);
+        receiveKartableVM = new ReceiveKartableVM(getContext(), OnEventListtenerReceive.title, OnEventListtenerReceive.senderName,
+                OnEventListtenerReceive.urgency, OnEventListtenerReceive.from, OnEventListtenerReceive.to, OnEventListtenerReceive.notObserved, OnEventListtenerReceive.confidentiality);
         MutableLiveData<ReceiveLetterRoot> mutableLiveData = receiveKartableVM.getReceiveLetterRootMutableLiveData();
         mutableLiveData.observe(getActivity(), new Observer<ReceiveLetterRoot>() {
             @Override

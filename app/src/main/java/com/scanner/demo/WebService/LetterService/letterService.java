@@ -1,4 +1,4 @@
-package com.scanner.demo.WebService.Letter;
+package com.scanner.demo.WebService.LetterService;
 
 import android.content.Context;
 import android.util.Log;
