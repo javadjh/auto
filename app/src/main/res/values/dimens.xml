@@ -8,7 +8,7 @@
     <dimen name="radius">15dp</dimen>
     <dimen name="buttonSize">17sp</dimen>
     <dimen name="smallSize">12sp</dimen>
-    <dimen name="cardRadius">7dp</dimen>
+    <dimen name="cardRadius">15dp</dimen>
     <dimen name="cardElevation">20dp</dimen>
     <dimen name="titleSize">17sp</dimen>
     <dimen name="mediumSize">15sp</dimen>

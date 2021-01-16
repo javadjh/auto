@@ -2,15 +2,24 @@ package com.scanner.demo.mainApp.kartable.upsertLetter.viewmodel;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
+import androidx.databinding.BindingAdapter;
 import androidx.lifecycle.MutableLiveData;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.scanner.demo.BR;
+import com.scanner.demo.R;
 import com.scanner.demo.WebService.AccountService.account;
 import com.scanner.demo.mainApp.fileManager.model.FileManagerModelResponseRoot;
 import com.scanner.demo.mainApp.fileManager.model.UserFileList;
+import com.scanner.demo.mainApp.kartable.upsertLetter.view.ChoiseFileBootomSheetDirections;
 
 public class ChoiseFileBottomSheetVM extends BaseObservable {
     //main Variable model
@@ -30,6 +39,7 @@ public class ChoiseFileBottomSheetVM extends BaseObservable {
         getFileUser(fileName);
     }
 
+    //logic
     private void getFileUser(String fileName) {
         account account = new account(context);
         fileManagerModelResponseRootMutableLiveData = account.files(null,null,fileName,1,50);

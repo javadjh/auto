@@ -28,6 +28,36 @@
                 <LinearLayout
                     android:layoutDirection="rtl"
                     android:textDirection="rtl"
+                    android:layout_marginTop="10dp"
+                    android:weightSum="100"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/sendLetter"
+                        android:textSize="@dimen/mediumSize"
+                        android:fontFamily="@font/vazir"
+                        android:text="@string/send"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_weight="50"
+                        android:background="@drawable/style_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+                    <Button
+                        android:fontFamily="@font/vazir"
+                        android:textSize="@dimen/mediumSize"
+                        android:text="@string/draft"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_weight="50"
+                        android:background="@drawable/style_btn_purple"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layoutDirection="rtl"
+                    android:textDirection="rtl"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="15dp"
                     android:orientation="horizontal"
@@ -37,7 +67,7 @@
                         android:textSize="@dimen/titleSize"
                         android:fontFamily="@font/vazir"
                         android:textColor="@color/white"
-                        android:text="آخرین نامه های دریافتی"
+                        android:text="@string/senderAddLetter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <View
@@ -300,21 +330,25 @@
                             android:id="@+id/choiseFile"
                             android:textSize="@dimen/mediumSize"
                             android:fontFamily="@font/vazir"
-                            android:text="افزودن"
+                            android:text="@string/choise"
                             android:background="@drawable/style_btn_purple"
                             android:layout_weight="40"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
                 </LinearLayout>
-                <androidx.recyclerview.widget.RecyclerView
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    tools:listitem="@layout/item_appendix"
-                    android:clipToPadding="false"
-                    android:clipChildren="false"
-                    android:paddingTop="10dp"
-                    android:paddingStart="20dp"
-                    app:spanCount="2"
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/vazir"
+                    android:textColor="@color/white"
+                    android:text="@string/add"
+                    android:id="@+id/addFileUpsertLetter"
+                    android:onClick="@{() -> UpsertLetterStepTwoVM.addFile(addFileUpsertLetter)}"
+                    android:background="@drawable/style_add_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </LinearLayout>

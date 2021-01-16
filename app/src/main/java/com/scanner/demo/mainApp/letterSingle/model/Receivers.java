@@ -2,12 +2,12 @@ package com.scanner.demo.mainApp.letterSingle.model;
 
 import java.util.List;
 
-public class actionMaker {
+public class Receivers {
     private String id;
     private String fullName;
     private String signature;
-    private String profile;
     private List<String> roles;
+    private String profile;
 
     public String getId() {
         return id;
@@ -33,19 +33,19 @@ public class actionMaker {
         this.signature = signature;
     }
 
-    public String getProfile() {
-        return profile;
-    }
-
-    public void setProfile(String profile) {
-        this.profile = profile;
-    }
-
     public List<String> getRoles() {
         return roles;
     }
 
     public void setRoles(List<String> roles) {
         this.roles = roles;
+    }
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
     }
 }

@@ -23,7 +23,9 @@ import com.scanner.demo.databinding.FragmentLetterSingleBinding;
 import com.scanner.demo.mainApp.homePage.view.HomePageFragmentDirections;
 import com.scanner.demo.mainApp.letterSingle.adapter.AppendixCustomAdapter;
 import com.scanner.demo.mainApp.letterSingle.adapter.CopiesCustomAdapter;
+import com.scanner.demo.mainApp.letterSingle.adapter.TrackCustomAdapter;
 import com.scanner.demo.mainApp.letterSingle.model.LetterSingleRoot;
+import com.scanner.demo.mainApp.letterSingle.model.TrackRoot;
 import com.scanner.demo.mainApp.letterSingle.viewmodel.LetterSinleVM;
 
 import java.util.Objects;
@@ -50,6 +52,7 @@ public class LetterSingleFragment extends Fragment {
     private void getPageData() {
         letterSinleVM = new LetterSinleVM(getContext(),letterId);
         MutableLiveData<LetterSingleRoot> mutableLiveData = letterSinleVM.getSingleRootMutableLiveData();
+        MutableLiveData<TrackRoot> trackRootMutableLiveData = letterSinleVM.getTrackRootMutableLiveData();
         mutableLiveData.observe(getActivity(), new Observer<LetterSingleRoot>() {
             @Override
             public void onChanged(LetterSingleRoot letterSingleRoot) {
@@ -59,6 +62,12 @@ public class LetterSingleFragment extends Fragment {
                 //set Adapter
                 fragmentLetterSingleBinding.recyCopies.setAdapter(new CopiesCustomAdapter(getContext(),letterSingleRoot.getData().getCopies()));
                 fragmentLetterSingleBinding.recyAppendix.setAdapter(new AppendixCustomAdapter(getContext(),letterSingleRoot.getData().getAppendixes()));
+            }
+        });
+        trackRootMutableLiveData.observe(getActivity(), new Observer<TrackRoot>() {
+            @Override
+            public void onChanged(TrackRoot trackRoot) {
+                fragmentLetterSingleBinding.recyTrack.setAdapter(new TrackCustomAdapter(trackRoot.getData(),getContext()));
             }
         });
     }

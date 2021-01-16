@@ -5,8 +5,11 @@ import com.scanner.demo.mainApp.homePage.model.ReceiveLetterRoot;
 import com.scanner.demo.loginPage.model.LoginModelBody;
 import com.scanner.demo.loginPage.model.LoginModelResponseRoot;
 import com.scanner.demo.mainApp.kartable.model.DraftResponseRoot;
+import com.scanner.demo.mainApp.kartable.upsertLetter.model.UpsertLetterRoot;
+import com.scanner.demo.mainApp.kartable.upsertLetter.model.UpsertResponse;
 import com.scanner.demo.mainApp.kartable.upsertLetter.model.UsersResponseRoot;
 import com.scanner.demo.mainApp.letterSingle.model.LetterSingleRoot;
+import com.scanner.demo.mainApp.letterSingle.model.TrackRoot;
 
 import java.io.File;
 import java.util.List;
@@ -14,6 +17,7 @@ import java.util.List;
 import io.reactivex.rxjava3.core.Single;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -51,5 +55,11 @@ public interface APIInterface {
     Call<String> sendFile(@Part MultipartBody.Part bodyFile);
 
     @GET("/api/v2/file/download/{id}")
-    Single<File> getFile(@Path("id") String id);
+    Single<ResponseBody> getFile(@Path("id") String id);
+
+    @GET("/api/v2/letter/track/{id}")
+    Single<TrackRoot> getTrackLetter(@Path("id") String id);
+
+    @POST("/api/v2/letter/upsert")
+    Single<UpsertResponse> upsertLetter(@Body UpsertLetterRoot upsertLetterRoot);
 }

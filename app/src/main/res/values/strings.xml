@@ -40,4 +40,11 @@
     <string name="receiverName">نام دریافت کننده</string>
     <string name="name">محمد جواد حجتی</string>
     <string name="date">1378/12/10 - 9:30</string>
+    <string name="choised">انتخاب شد</string>
+    <string name="add">افزودن</string>
+    <string name="confirmed">تایید</string>
+    <string name="choise">انتخاب</string>
+    <string name="senderAddLetter">ارسال کننده</string>
+    <string name="send">ارسال</string>
+    <string name="draft">پیشنویس</string>
 </resources>

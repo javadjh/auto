@@ -2,6 +2,7 @@ package com.scanner.demo.WebService.LetterService;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -10,7 +11,10 @@ import com.scanner.demo.CustomClass.AlertDialog;
 import com.scanner.demo.mainApp.homePage.model.ReceiveLetterRoot;
 import com.scanner.demo.WebService.APIClient;
 import com.scanner.demo.mainApp.kartable.model.DraftResponseRoot;
+import com.scanner.demo.mainApp.kartable.upsertLetter.model.UpsertLetterRoot;
+import com.scanner.demo.mainApp.kartable.upsertLetter.model.UpsertResponse;
 import com.scanner.demo.mainApp.letterSingle.model.LetterSingleRoot;
+import com.scanner.demo.mainApp.letterSingle.model.TrackRoot;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
@@ -28,6 +32,10 @@ public class letterService extends ViewModel {
     private MutableLiveData<ReceiveLetterRoot> sendMutableLiveData  = new MutableLiveData<>();
     //getDraft
     private MutableLiveData<DraftResponseRoot> draftResponseRootMutableLiveData = new MutableLiveData<>();
+    //getTrack
+    private MutableLiveData<TrackRoot> trackRootMutableLiveData = new MutableLiveData<>();
+    //upsertLetter
+    private MutableLiveData<UpsertResponse> upsertResponseMutableLiveData = new MutableLiveData<>();
     APIClient apiClient;
     Context context;
 
@@ -104,6 +112,7 @@ public class letterService extends ViewModel {
         return sendMutableLiveData;
     }
 
+    //getDraftLetter
     public MutableLiveData<DraftResponseRoot> getDraftLetter(){
         if(draftResponseRootMutableLiveData.getValue()==null) {
             apiClient = new APIClient();
@@ -124,6 +133,47 @@ public class letterService extends ViewModel {
         }
         return draftResponseRootMutableLiveData;
     }
+
+    //getLetterTrack
+    public MutableLiveData<TrackRoot> getTrack(String id){
+        apiClient = new APIClient();
+        compositeDisposable.add(apiClient.GET_TRACK(id)
+        .subscribeOn(Schedulers.newThread())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribeWith(new DisposableSingleObserver<TrackRoot>() {
+            @Override
+            public void onSuccess(@NonNull TrackRoot trackRoot) {
+                trackRootMutableLiveData.setValue(trackRoot);
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
+                Log.i("error",e.toString());
+            }
+        }));
+        return trackRootMutableLiveData;
+    }
+
+    //upsertLetter
+    public MutableLiveData<UpsertResponse> upsertLetter(UpsertLetterRoot upsertLetterRoot){
+        apiClient = new APIClient();
+        compositeDisposable.add(apiClient.UPSERT_LETTER(upsertLetterRoot)
+        .subscribeOn(Schedulers.newThread())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribeWith(new DisposableSingleObserver<UpsertResponse>() {
+            @Override
+            public void onSuccess(@NonNull UpsertResponse upsertResponse) {
+                upsertResponseMutableLiveData.setValue(upsertResponse);
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
+                Toast.makeText(context, "e : " + e.toString(),  Toast.LENGTH_SHORT).show();
+            }
+        }));
+        return upsertResponseMutableLiveData;
+    }
+
 
     @Override
     protected void onCleared() {

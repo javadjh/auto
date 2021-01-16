@@ -219,4 +219,13 @@
             android:id="@+id/action_sendSearchFragment_to_kartableFragment"
             app:destination="@id/kartableFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/choiseFileBootomSheet"
+        android:name="com.scanner.demo.mainApp.kartable.upsertLetter.view.ChoiseFileBootomSheet"
+        android:label="fragment_choise_file_bootom_sheet"
+        tools:layout="@layout/fragment_choise_file_bootom_sheet" >
+        <action
+            android:id="@+id/action_choiseFileBootomSheet_to_mainActivity"
+            app:destination="@id/mainActivity" />
+    </fragment>
 </navigation>

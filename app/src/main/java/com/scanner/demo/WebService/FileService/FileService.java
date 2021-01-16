@@ -17,6 +17,7 @@ import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.observers.DisposableSingleObserver;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+import okhttp3.ResponseBody;
 
 import static android.content.Context.DOWNLOAD_SERVICE;
 
@@ -35,10 +36,10 @@ public class FileService {
         compositeDisposable.add(apiClient.GET_FILE(id)
         .subscribeOn(Schedulers.newThread())
         .observeOn(AndroidSchedulers.mainThread())
-        .subscribeWith(new DisposableSingleObserver<File>() {
+        .subscribeWith(new DisposableSingleObserver<ResponseBody>() {
             @Override
-            public void onSuccess(@NonNull File file) {
-                Toast.makeText(context, "file Name : " + file.getName(), Toast.LENGTH_SHORT).show();
+            public void onSuccess(@NonNull ResponseBody body) {
+
             }
 
             @Override

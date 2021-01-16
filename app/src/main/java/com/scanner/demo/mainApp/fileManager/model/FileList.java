@@ -13,6 +13,15 @@ public class FileList {
     private String createdAt;
     private String date;
     private String time;
+    private boolean isChecked;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
 
     public String getId() {
         return id;

@@ -38,15 +38,17 @@ public class MainApp extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(navController.getCurrentDestination().getId()==R.id.letterSingleFragment ||
-        navController.getCurrentDestination().getId()==R.id.upsertLetterFragment||
-        navController.getCurrentDestination().getId()==R.id.upsertLetterStepTwoFragment){
-            super.onBackPressed();
+        if(navController.getCurrentDestination().getId()==R.id.homePageFragment ||
+        navController.getCurrentDestination().getId()==R.id.kartableFragment||
+        navController.getCurrentDestination().getId()==R.id.archiveFragment||
+        navController.getCurrentDestination().getId()==R.id.fileManegerFragment){
+            finish();
+            finish();
+            finish();
+            finish();
         }else{
-            finish();
-            finish();
-            finish();
-            finish();
+
+            super.onBackPressed();
         }
     }
 }

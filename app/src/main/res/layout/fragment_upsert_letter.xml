@@ -4,19 +4,32 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".mainApp.kartable.upsertLetter.view.UpsertLetterFragment">
+    <data>
+        <variable
+            name="UpsertLetterStepOneVM"
+            type="com.scanner.demo.mainApp.kartable.upsertLetter.viewmodel.UpsertLetterStepOneVM" />
+    </data>
     <FrameLayout
+        android:layoutDirection="rtl"
+        android:textDirection="rtl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RelativeLayout
+            android:textDirection="rtl"
+            android:layoutDirection="rtl"
             android:background="@color/black"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
+                android:textDirection="rtl"
+                android:layoutDirection="rtl"
                 android:id="@+id/contentBlock"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <LinearLayout
+                    android:textDirection="rtl"
+                    android:layoutDirection="rtl"
                     android:paddingBottom="20dp"
                     android:id="@+id/letterUpsertContent"
                     android:background="@color/black"
@@ -27,8 +40,8 @@
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="15dp"
                         android:drawablePadding="10dp"
-                        android:drawableRight="@drawable/ic_baseline_subtitles_24"
-                        android:id="@+id/usernameLogin"
+                        android:drawableStart="@drawable/ic_baseline_subtitles_24"
+                        android:id="@+id/letterTitle"
                         android:textDirection="rtl"
                         android:fontFamily="@font/vazir"
                         android:layout_marginStart="20dp"
@@ -42,26 +55,24 @@
                     <androidx.cardview.widget.CardView
                         android:layout_marginBottom="10dp"
                         app:cardCornerRadius="@dimen/radius"
+                        app:cardBackgroundColor="@color/lightBlack"
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="20dp"
                         android:background="@color/black"
                         app:cardElevation="@dimen/cardElevation"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/style_edit_text"
                             android:orientation="vertical">
-
                             <androidx.cardview.widget.CardView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:weightSum="1000"
                                 app:cardCornerRadius="@dimen/cardRadius"
                                 app:cardElevation="0dp">
-
                                 <LinearLayout
                                     android:id="@+id/actionBarContent"
                                     android:layout_width="match_parent"
@@ -70,12 +81,10 @@
                                     android:layoutDirection="rtl"
                                     android:orientation="horizontal"
                                     android:weightSum="1000">
-
                                     <View
                                         android:layout_width="1dp"
                                         android:layout_height="wrap_content"
                                         android:background="@color/white" />
-
                                     <com.chinalwb.are.styles.toolbar.ARE_ToolbarDefault
                                         android:id="@+id/areToolbar"
                                         android:layout_width="0dp"
@@ -93,7 +102,6 @@
                                 android:layout_marginLeft="2dp"
                                 android:layout_marginRight="2dp"
                                 android:layout_marginBottom="7dp">
-
                                 <com.chinalwb.are.AREditText
                                     android:id="@+id/arEditText"
                                     android:layout_width="match_parent"
@@ -111,10 +119,69 @@
                             </ScrollView>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginTop="20dp"
+                        app:cardElevation="@dimen/cardElevation"
+                        app:cardCornerRadius="@dimen/cardRadius"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.jaredrummler.materialspinner.MaterialSpinner
+                            android:id="@+id/urgentSpinner"
+                            android:onClick="@{() -> UpsertLetterStepOneVM.setSpinnerHintUrgent(urgentSpinner,`سطح محرمانگی نامه`)}"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            app:ms_hint_color="@color/gray"
+                            android:hint="@string/urgentType"
+                            app:ms_hint="@string/urgentType"
+                            android:fontFamily="@font/vazir"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/mediumSize"
+                            android:textColorHint="@color/white"
+                            android:layoutDirection="rtl"
+                            android:textDirection="rtl"
+                            app:ms_text_color="@color/white"
+                            app:ms_arrow_tint="@color/white"
+                            app:ms_background_color="@color/lightBlack"
+                            android:background="@color/lightBlack"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginTop="20dp"
+                        app:cardElevation="@dimen/cardElevation"
+                        app:cardCornerRadius="@dimen/cardRadius"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.jaredrummler.materialspinner.MaterialSpinner
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:id="@+id/confidentalySpinner"
+                            android:onClick="@{() -> UpsertLetterStepOneVM.setSpinnerHintConfidentely(confidentalySpinner,`نوع نامه`)}"
+                            app:ms_hint_color="@color/gray"
+                            android:hint="@string/confidentalityLevel"
+                            app:ms_hint="@string/confidentalityLevel"
+                            android:fontFamily="@font/vazir"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/mediumSize"
+                            android:textColorHint="@color/white"
+                            android:layoutDirection="rtl"
+                            android:textDirection="rtl"
+                            app:ms_text_color="@color/white"
+                            app:ms_arrow_tint="@color/white"
+                            app:ms_background_color="@color/lightBlack"
+                            android:background="@color/lightBlack"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </androidx.cardview.widget.CardView>
                 </LinearLayout>
             </LinearLayout>
             <Button
                 android:id="@+id/goToStepTwoAddLetter"
+                android:onClick="@{() -> UpsertLetterStepOneVM.sendToStepTwo(goToStepTwoAddLetter,letterTitle,arEditText)}"
                 android:layout_below="@id/contentBlock"
                 android:layout_centerHorizontal="true"
                 android:text="@string/nextStep"

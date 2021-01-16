@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.scanner.demo.BR;
 import com.scanner.demo.WebService.LetterService.letterService;
 import com.scanner.demo.mainApp.letterSingle.model.LetterSingleRoot;
+import com.scanner.demo.mainApp.letterSingle.model.TrackRoot;
 import com.scanner.demo.mainApp.letterSingle.model.data;
 import com.squareup.picasso.Picasso;
 
@@ -26,6 +27,7 @@ public class LetterSinleVM extends BaseObservable {
     //context and mutable
     private Context context;
     private MutableLiveData<LetterSingleRoot> singleRootMutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<TrackRoot> trackRootMutableLiveData = new MutableLiveData<>();
 
     //cons
     public LetterSinleVM(Context context, String letterId) {
@@ -38,7 +40,9 @@ public class LetterSinleVM extends BaseObservable {
     private void getSinlgeData() {
         letterService letterService = new letterService(context);
         singleRootMutableLiveData = letterService.getSingleLetter(letterId);
+        trackRootMutableLiveData = letterService.getTrack("d5cc768e-c75a-4a65-a009-0bd1c08b5640");
         notifyPropertyChanged(BR.singleRootMutableLiveData);
+        notifyPropertyChanged(BR.trackRootMutableLiveData);
     }
 
     //setProfile
@@ -48,6 +52,16 @@ public class LetterSinleVM extends BaseObservable {
     }
 
     //getter and setter
+    @Bindable
+    public MutableLiveData<TrackRoot> getTrackRootMutableLiveData() {
+        return trackRootMutableLiveData;
+    }
+
+    public void setTrackRootMutableLiveData(MutableLiveData<TrackRoot> trackRootMutableLiveData) {
+        this.trackRootMutableLiveData = trackRootMutableLiveData;
+        notifyPropertyChanged(BR.trackRootMutableLiveData);
+    }
+
     @Bindable
     public com.scanner.demo.mainApp.letterSingle.model.data getData() {
         return data;

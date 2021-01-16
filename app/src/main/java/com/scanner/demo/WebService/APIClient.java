@@ -5,8 +5,11 @@ import com.scanner.demo.mainApp.homePage.model.ReceiveLetterRoot;
 import com.scanner.demo.loginPage.model.LoginModelBody;
 import com.scanner.demo.loginPage.model.LoginModelResponseRoot;
 import com.scanner.demo.mainApp.kartable.model.DraftResponseRoot;
+import com.scanner.demo.mainApp.kartable.upsertLetter.model.UpsertLetterRoot;
+import com.scanner.demo.mainApp.kartable.upsertLetter.model.UpsertResponse;
 import com.scanner.demo.mainApp.kartable.upsertLetter.model.UsersResponseRoot;
 import com.scanner.demo.mainApp.letterSingle.model.LetterSingleRoot;
+import com.scanner.demo.mainApp.letterSingle.model.TrackRoot;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +21,7 @@ import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -75,8 +79,14 @@ public class APIClient  {
     public Call<String> UPLOAD_FILE(MultipartBody.Part bodyFile){
         return apiInterface.sendFile(bodyFile);
     }
-    public Single<File> GET_FILE(String id){
+    public Single<ResponseBody> GET_FILE(String id){
         return apiInterface.getFile(id);
+    }
+    public Single<TrackRoot> GET_TRACK(String id){
+        return apiInterface.getTrackLetter(id);
+    }
+    public Single<UpsertResponse> UPSERT_LETTER(UpsertLetterRoot upsertLetterRoot){
+        return apiInterface.upsertLetter(upsertLetterRoot);
     }
 
 }

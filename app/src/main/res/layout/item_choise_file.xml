@@ -8,6 +8,7 @@
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="@dimen/cardRadius"
         app:cardElevation="@dimen/cardElevation"
+        android:id="@+id/cardChoiseFile"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:textDirection="rtl"
@@ -59,14 +60,17 @@
                     android:layout_height="0dp"
                     android:layout_weight="50"/>
             </LinearLayout>
-            <com.uniquestudio.library.CircleCheckBox
-                android:layout_width="25dp"
+            <TextView
+                android:textColor="@color/white"
+                android:fontFamily="@font/vazir"
+                android:text="@string/choised"
+                android:layout_width="wrap_content"
                 android:layout_alignParentEnd="true"
-                app:background_color="@color/lightBlack"
-                app:border_color="@color/gray"
+                android:id="@+id/isChecked"
+                android:visibility="gone"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="10dp"
-                android:layout_height="25dp"/>
+                android:layout_height="wrap_content"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </layout>

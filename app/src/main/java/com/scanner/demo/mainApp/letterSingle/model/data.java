@@ -17,7 +17,7 @@ public class data {
     private String actionMadeTime;
     private String actionMadeDate;
     private sender sender;
-    private actionMaker actionMaker;
+    private ActionMaker actionMaker;
     private receiver receiver;
     private List<Copies> copies;
     private String paraph;
@@ -136,11 +136,11 @@ public class data {
         this.sender = sender;
     }
 
-    public com.scanner.demo.mainApp.letterSingle.model.actionMaker getActionMaker() {
+    public ActionMaker getActionMaker() {
         return actionMaker;
     }
 
-    public void setActionMaker(com.scanner.demo.mainApp.letterSingle.model.actionMaker actionMaker) {
+    public void setActionMaker(ActionMaker actionMaker) {
         this.actionMaker = actionMaker;
     }
 

@@ -28,11 +28,13 @@ import com.chinalwb.are.styles.toolitems.ARE_ToolItem_Underline;
 import com.chinalwb.are.styles.toolitems.IARE_ToolItem;
 import com.scanner.demo.R;
 import com.scanner.demo.databinding.FragmentUpsertLetterBinding;
+import com.scanner.demo.mainApp.kartable.upsertLetter.viewmodel.UpsertLetterStepOneVM;
 
 public class UpsertLetterFragment extends Fragment {
     FragmentUpsertLetterBinding fragmentUpsertLetterBinding;
     private IARE_Toolbar mToolbar;
     private AREditText mEditText;
+    UpsertLetterStepOneVM upsertLetterStepOneVM;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,6 +45,8 @@ public class UpsertLetterFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        upsertLetterStepOneVM = new UpsertLetterStepOneVM(getContext());
+        fragmentUpsertLetterBinding.setUpsertLetterStepOneVM(upsertLetterStepOneVM);
         mToolbar = fragmentUpsertLetterBinding.areToolbar;
         mEditText = fragmentUpsertLetterBinding.arEditText;
         fragmentUpsertLetterBinding.goToStepTwoAddLetter.setOnClickListener(View ->{
