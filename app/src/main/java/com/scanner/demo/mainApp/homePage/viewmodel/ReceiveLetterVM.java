@@ -2,6 +2,10 @@ package com.scanner.demo.mainApp.homePage.viewmodel;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -53,6 +57,27 @@ public class ReceiveLetterVM extends BaseObservable {
     @BindingAdapter("android:setImageProfile")
     public static void setProfile(CircleImageView circleImageView , String url){
         Picasso.get().load(url).into(circleImageView);
+    }
+
+    //searchValue
+    public void searchReceive(EditText editText){
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                letterService letterService = new letterService(context);
+                receiveLetterRootMutableLiveData = letterService.getReceivedLetter(s.toString(), null, null, null, null, null, null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     //getter and setter

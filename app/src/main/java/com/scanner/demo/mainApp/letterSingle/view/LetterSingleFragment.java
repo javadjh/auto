@@ -35,12 +35,13 @@ public class LetterSingleFragment extends Fragment {
     FragmentLetterSingleBinding fragmentLetterSingleBinding;
     private String letterId,actionId;
     LetterSinleVM letterSinleVM;
-    FloatingActionButton actionBottom;
+    FloatingActionButton actionBottom,replayLetter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         fragmentLetterSingleBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_letter_single,container,false);
         actionBottom = fragmentLetterSingleBinding.actionBottom;
+        replayLetter = fragmentLetterSingleBinding.replayLetter;
         return fragmentLetterSingleBinding.getRoot();
     }
 
@@ -52,6 +53,16 @@ public class LetterSingleFragment extends Fragment {
         letterId = getArguments().getString("id");
         getPageData();
         actionLetter();
+        replayLetterBtn();
+    }
+
+    private void replayLetterBtn() {
+        replayLetter.setOnClickListener(View->{
+            Bundle bundle = new Bundle();
+            bundle.putString("actionType","REPLY");
+            bundle.putString("parentId",getArguments().getString("parentId",null));
+            Navigation.findNavController(replayLetter).navigate(R.id.action_letterSingleFragment_to_upsertLetterFragment,bundle);
+        });
     }
 
     private void actionLetter() {

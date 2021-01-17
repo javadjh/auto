@@ -40,6 +40,7 @@ public class HomePageFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         getActivity().getFragmentManager().popBackStack();
         receiveLetterVM = new ReceiveLetterVM(getContext());
+        fragmentHomePageBinding.setReceiveLetterVM(receiveLetterVM);
         MutableLiveData<ReceiveLetterRoot> mutableLiveData = receiveLetterVM.getReceiveLetterRootMutableLiveData();
         mutableLiveData.observe(getActivity(), new Observer<ReceiveLetterRoot>() {
             @Override
@@ -47,10 +48,11 @@ public class HomePageFragment extends Fragment {
                 receiveLetterVM.setData(receiveLetterRoot.getData());
                 fragmentHomePageBinding.setReceiveLetterVM(receiveLetterVM);
                 fragmentHomePageBinding.recyReceiveLetter.setAdapter(new ReceiveLetterCustomAdapter(receiveLetterRoot.getData().getList(), getContext(),
-                        (letterId, actionId) -> {
+                        (letterId, actionId,parentId) -> {
                             Bundle bundle = new Bundle();
                             bundle.putString("actionId",actionId);
                             bundle.putString("id",letterId);
+                            bundle.putString("parentId",parentId);
                             bundle.putString("key","home");
                             Navigation.findNavController(fragmentHomePageBinding.recyReceiveLetter).navigate(R.id.action_homePageFragment_to_letterSingleFragment,bundle);
                         }));

@@ -60,17 +60,7 @@
                         android:textColor="@color/white"
                         android:text="@{listReceiveLetter.sender.fullName}"
                         android:layout_width="0dp"
-                        android:layout_weight="70"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:textSize="@dimen/mediumSize"
-                        android:gravity="end"
-                        android:layout_gravity="end"
-                        android:fontFamily="@font/vazir"
-                        android:textColor="@color/gray"
-                        android:text="@{listReceiveLetter.actionMadeDate}"
-                        android:layout_width="0dp"
-                        android:layout_weight="30"
+                        android:layout_weight="100"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
                 <TextView
@@ -85,7 +75,7 @@
                     android:layout_height="wrap_content"/>
                 <org.sufficientlysecure.htmltextview.HtmlTextView
                     android:ellipsize="end"
-                    android:maxLines="2"
+                    android:maxLines="1"
                     android:textSize="@dimen/mediumSize"
                     android:id="@+id/contextLetter"
                     android:gravity="start"
@@ -96,6 +86,59 @@
                     android:textAppearance="@android:style/TextAppearance.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:gravity="end"
+                    android:layout_gravity="end"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/sendTimeSingleLetter"
+                        android:layout_marginEnd="20dp"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_clock"
+                            android:layout_width="15dp"
+                            app:tint="@color/white"
+                            android:layout_height="15dp"/>
+                        <TextView
+                            android:layout_marginStart="10dp"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/smallSize"
+                            android:fontFamily="@font/vazir"
+                            android:textColor="@color/white"
+                            android:text="@{listReceiveLetter.actionMadeTime}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginEnd="10dp"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_calendar"
+                            android:layout_width="15dp"
+                            app:tint="@color/white"
+                            android:layout_height="15dp"/>
+                        <TextView
+                            android:layout_marginStart="10dp"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/smallSize"
+                            android:fontFamily="@font/vazir"
+                            android:textColor="@color/white"
+                            android:text="@{listReceiveLetter.actionMadeDate}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

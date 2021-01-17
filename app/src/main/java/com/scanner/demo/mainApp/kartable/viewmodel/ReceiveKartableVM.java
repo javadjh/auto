@@ -1,6 +1,7 @@
 package com.scanner.demo.mainApp.kartable.viewmodel;
 
 import android.content.Context;
+import android.widget.TextView;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -9,6 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.scanner.demo.BR;
 import com.scanner.demo.WebService.LetterService.letterService;
 import com.scanner.demo.mainApp.homePage.model.ReceiveLetterRoot;
+import com.scanner.demo.mainApp.kartable.searchKartable.model.OnEventListtenerReceive;
 
 public class ReceiveKartableVM extends BaseObservable {
     private com.scanner.demo.mainApp.homePage.model.data data;
@@ -38,6 +40,18 @@ public class ReceiveKartableVM extends BaseObservable {
         letterService letterService = new letterService(context);
         receiveLetterRootMutableLiveData = letterService.getReceivedLetter(title, senderName, urgency, from, to, notObserved,confidentiality);
         notifyPropertyChanged(BR.data);
+    }
+
+    //empty Stack
+    public void clearSearchValue(){
+        OnEventListtenerReceive.title = null;
+        OnEventListtenerReceive.senderName = null;
+        OnEventListtenerReceive.urgency = null;
+        OnEventListtenerReceive.from = null;
+        OnEventListtenerReceive.to = null;
+        OnEventListtenerReceive.notObserved = null;
+        OnEventListtenerReceive.confidentiality = null;
+        getReceivedLetterKartable(null ,null,null,null,null ,null,null);
     }
 
 

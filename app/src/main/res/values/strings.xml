@@ -50,4 +50,6 @@
     <string name="SendToOnotherPeople">ارجاع نامه</string>
     <string name="addUser">افزودن کاربر</string>
     <string name="addFile">افزودن فایل</string>
+    <string name="searchLetterReceive">جست وجو در نامه های دریافتی</string>
+    <string name="emtyStack">خالی کردن</string>
 </resources>

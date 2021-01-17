@@ -85,8 +85,12 @@ public class UpsertLetterStepTwoFragment extends Fragment {
             String title = getArguments().getString("letterTitle");
             //Urgent
             String Urgent = getArguments().getString("urgently");
+            //actionType
+            String actionType = getArguments().getString("actionType");
+            //parentId
+            String parentId = getArguments().getString("parentId");
             upsertLetterStepTwoVM.upsertLetter(new UpsertLetterRoot(
-                    null,null,null,title,content,Urgent,
+                    null,parentId,actionType,title,content,Urgent,
                     receiver,sender,null,confidently,appendixList,copiesLists,false));
         });
 

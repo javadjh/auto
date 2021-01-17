@@ -45,7 +45,10 @@ public class UpsertLetterFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        upsertLetterStepOneVM = new UpsertLetterStepOneVM(getContext());
+        if (getArguments() != null) {
+            upsertLetterStepOneVM = new UpsertLetterStepOneVM(getContext(),getArguments().getString("actionType","SEND"),
+                    getArguments().getString("parentId",null));
+        }
         fragmentUpsertLetterBinding.setUpsertLetterStepOneVM(upsertLetterStepOneVM);
         mToolbar = fragmentUpsertLetterBinding.areToolbar;
         mEditText = fragmentUpsertLetterBinding.arEditText;

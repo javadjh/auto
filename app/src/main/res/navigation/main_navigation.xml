@@ -157,6 +157,9 @@
         <action
             android:id="@+id/action_letterSingleFragment_to_actionLetterFragment"
             app:destination="@id/actionLetterFragment" />
+        <action
+            android:id="@+id/action_letterSingleFragment_to_upsertLetterFragment"
+            app:destination="@id/upsertLetterFragment" />
     </fragment>
     <fragment
         android:id="@+id/upsertLetterFragment"
@@ -169,6 +172,9 @@
         <action
             android:id="@+id/action_upsertLetterFragment_to_upsertLetterStepTwoFragment"
             app:destination="@id/upsertLetterStepTwoFragment" />
+        <action
+            android:id="@+id/action_upsertLetterFragment_to_letterSingleFragment"
+            app:destination="@id/letterSingleFragment" />
     </fragment>
     <fragment
         android:id="@+id/upsertLetterStepTwoFragment"

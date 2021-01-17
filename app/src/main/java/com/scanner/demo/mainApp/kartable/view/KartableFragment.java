@@ -42,17 +42,7 @@ public class KartableFragment extends Fragment {
         fragmentKartableBinding.setKartableFragment(this);
         fragmentKartableBinding.kartableViewPager.setAdapter(new SliderAdapter(requireActivity().getSupportFragmentManager()));
         fragmentKartableBinding.tabBarActionBar.setupWithViewPager(fragmentKartableBinding.kartableViewPager);
-        if(getArguments() != null) {
-            try {
-                fragmentKartableBinding.kartableViewPager.setCurrentItem(getArguments().getInt("currentPage"));
-            }catch (Exception ex){
-                fragmentKartableBinding.kartableViewPager.setCurrentItem(2);
-            }
-
-        }else{
-            fragmentKartableBinding.kartableViewPager.setCurrentItem(2);
-        }
-        //
+        fragmentKartableBinding.kartableViewPager.setCurrentItem(getArguments().getInt("currentPage",2));
     }
 
     @Override

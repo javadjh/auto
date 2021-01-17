@@ -50,10 +50,11 @@ public class SendKartableFragment extends Fragment {
                 sendKartableVM.setData(receiveLetterRoot.getData());
                 fragmentSendKartableBinding.setSendKartableVM(sendKartableVM);
                 fragmentSendKartableBinding.recySendLetterKartable.setAdapter(new ReceiveLetterCustomAdapter(
-                        receiveLetterRoot.getData().getList(), getContext(), (letterId, actionId) -> {
+                        receiveLetterRoot.getData().getList(), getContext(), (letterId, actionId,parentId) -> {
                     Bundle bundle = new Bundle();
                     bundle.putString("actionId", actionId);
                     bundle.putString("id", letterId);
+                    bundle.putString("parentId",parentId);
                     bundle.putString("key", "kartable");
                     Navigation.findNavController(fragmentSendKartableBinding.recySendLetterKartable).navigate(R.id.action_kartableFragment_to_letterSingleFragment, bundle);
                 }));

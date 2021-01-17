@@ -23,9 +23,13 @@ public class UpsertLetterStepOneVM extends BaseObservable {
     private Context context;
     private String confidently;
     private String urgently;
+    private String actionType;
+    private String parentId;
 
-    public UpsertLetterStepOneVM(Context context) {
+    public UpsertLetterStepOneVM(Context context, String actionType, String parentId) {
         this.context = context;
+        this.actionType = actionType;
+        this.parentId = parentId;
     }
 
     public void setSpinnerHintConfidentely(MaterialSpinner materialSpinner, String hint){
@@ -68,6 +72,8 @@ public class UpsertLetterStepOneVM extends BaseObservable {
         bundle.putString("descriptionLetter",arEditText.getHtml());
         bundle.putString("confidently",confidently);
         bundle.putString("urgently",urgently);
+        bundle.putString("actionType",actionType);
+        bundle.putString("parentId",parentId);
         Navigation.findNavController(button).navigate(R.id.action_upsertLetterFragment_to_upsertLetterStepTwoFragment,bundle);
     }
 

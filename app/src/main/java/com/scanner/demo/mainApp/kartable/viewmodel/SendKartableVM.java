@@ -12,6 +12,7 @@ import com.scanner.demo.BR;
 import com.scanner.demo.R;
 import com.scanner.demo.WebService.LetterService.letterService;
 import com.scanner.demo.mainApp.homePage.model.ReceiveLetterRoot;
+import com.scanner.demo.mainApp.kartable.searchKartable.model.OnEventListennerSend;
 
 public class SendKartableVM extends BaseObservable {
     //modelVariable
@@ -48,7 +49,6 @@ public class SendKartableVM extends BaseObservable {
     public void sendToSearch(TextView textView){
         Navigation.findNavController(textView).navigate(R.id.action_kartableFragment_to_sendSearchFragment);
     }
-
 
     //getter and setter
     @Bindable
