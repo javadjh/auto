@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.scanner.demo.R;
 import com.scanner.demo.databinding.FragmentLetterSingleBinding;
 import com.scanner.demo.mainApp.homePage.view.HomePageFragmentDirections;
@@ -32,12 +33,14 @@ import java.util.Objects;
 
 public class LetterSingleFragment extends Fragment {
     FragmentLetterSingleBinding fragmentLetterSingleBinding;
-    private String letterId;
+    private String letterId,actionId;
     LetterSinleVM letterSinleVM;
+    FloatingActionButton actionBottom;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         fragmentLetterSingleBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_letter_single,container,false);
+        actionBottom = fragmentLetterSingleBinding.actionBottom;
         return fragmentLetterSingleBinding.getRoot();
     }
 
@@ -45,49 +48,50 @@ public class LetterSingleFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         closePage();
+        actionId = getArguments().getString("actionId");
         letterId = getArguments().getString("id");
         getPageData();
+        actionLetter();
     }
 
+    private void actionLetter() {
+        actionBottom.setOnClickListener(View ->{
+            Bundle bundle = new Bundle();
+            bundle.putString("id",letterId);
+            bundle.putString("actionId",actionId);
+            Navigation.findNavController(actionBottom).navigate(R.id.action_letterSingleFragment_to_actionLetterFragment,bundle);
+        });
+    }
+
+
     private void getPageData() {
-        letterSinleVM = new LetterSinleVM(getContext(),letterId);
+        letterSinleVM = new LetterSinleVM(getContext(),actionId,letterId);
         MutableLiveData<LetterSingleRoot> mutableLiveData = letterSinleVM.getSingleRootMutableLiveData();
         MutableLiveData<TrackRoot> trackRootMutableLiveData = letterSinleVM.getTrackRootMutableLiveData();
-        mutableLiveData.observe(getActivity(), new Observer<LetterSingleRoot>() {
-            @Override
-            public void onChanged(LetterSingleRoot letterSingleRoot) {
-                letterSinleVM.setData(letterSingleRoot.getData());
-                fragmentLetterSingleBinding.setLetterSinleVM(letterSinleVM);
-                fragmentLetterSingleBinding.letterContent.setHtml(letterSingleRoot.getData().getContent());
-                //set Adapter
-                fragmentLetterSingleBinding.recyCopies.setAdapter(new CopiesCustomAdapter(getContext(),letterSingleRoot.getData().getCopies()));
-                fragmentLetterSingleBinding.recyAppendix.setAdapter(new AppendixCustomAdapter(getContext(),letterSingleRoot.getData().getAppendixes()));
-            }
+        mutableLiveData.observe(getActivity(), letterSingleRoot -> {
+            letterSinleVM.setData(letterSingleRoot.getData());
+            fragmentLetterSingleBinding.setLetterSinleVM(letterSinleVM);
+            fragmentLetterSingleBinding.letterContent.setHtml(letterSingleRoot.getData().getContent());
+            //set Adapter
+            fragmentLetterSingleBinding.recyCopies.setAdapter(new CopiesCustomAdapter(getContext(),letterSingleRoot.getData().getCopies()));
+            fragmentLetterSingleBinding.recyAppendix.setAdapter(new AppendixCustomAdapter(getContext(),letterSingleRoot.getData().getAppendixes()));
         });
-        trackRootMutableLiveData.observe(getActivity(), new Observer<TrackRoot>() {
-            @Override
-            public void onChanged(TrackRoot trackRoot) {
-                fragmentLetterSingleBinding.recyTrack.setAdapter(new TrackCustomAdapter(trackRoot.getData(),getContext()));
-            }
-        });
+        trackRootMutableLiveData.observe(getActivity(), trackRoot -> fragmentLetterSingleBinding.recyTrack.setAdapter(new TrackCustomAdapter(trackRoot.getData(),getContext())));
     }
 
     private void closePage() {
-        fragmentLetterSingleBinding.closeLetterSingle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavDirections navDirections = null;
-                switch (Objects.requireNonNull(requireArguments().getString("key"))){
-                    case "home":
-                        navDirections = LetterSingleFragmentDirections.actionLetterSingleFragmentToHomePageFragment2();
-                        break;
-                    case "kartable":
-                        navDirections = LetterSingleFragmentDirections.actionLetterSingleFragmentToKartableFragment();
-                        break;
-                }
-                assert navDirections != null;
-                Navigation.findNavController(fragmentLetterSingleBinding.closeLetterSingle).navigate(navDirections);
+        fragmentLetterSingleBinding.closeLetterSingle.setOnClickListener(v -> {
+            NavDirections navDirections = null;
+            switch (Objects.requireNonNull(requireArguments().getString("key"))){
+                case "home":
+                    navDirections = LetterSingleFragmentDirections.actionLetterSingleFragmentToHomePageFragment2();
+                    break;
+                case "kartable":
+                    navDirections = LetterSingleFragmentDirections.actionLetterSingleFragmentToKartableFragment();
+                    break;
             }
+            assert navDirections != null;
+            Navigation.findNavController(fragmentLetterSingleBinding.closeLetterSingle).navigate(navDirections);
         });
     }
 

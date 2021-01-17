@@ -51,14 +51,12 @@ public class ReceiveKartableFragment extends Fragment {
                 receiveKartableVM.setData(receiveLetterRoot.getData());
                 fragmentReceiveKartableBinding.setReceiveKartableVM(receiveKartableVM);
                 fragmentReceiveKartableBinding.recyReceiveKartable.setAdapter(new ReceiveLetterCustomAdapter(receiveLetterRoot.getData().getList(), getContext(),
-                        new onClickLetterListener() {
-                            @Override
-                            public void onClickLetterListenetAdapter(String letterId) {
-                                Bundle bundle = new Bundle();
-                                bundle.putString("id",letterId);
-                                bundle.putString("key","kartable");
-                                Navigation.findNavController(fragmentReceiveKartableBinding.recyReceiveKartable).navigate(R.id.action_kartableFragment_to_letterSingleFragment,bundle);
-                            }
+                        (letterId, actionId) -> {
+                            Bundle bundle = new Bundle();
+                            bundle.putString("actionId",actionId);
+                            bundle.putString("id",letterId);
+                            bundle.putString("key","kartable");
+                            Navigation.findNavController(fragmentReceiveKartableBinding.recyReceiveKartable).navigate(R.id.action_kartableFragment_to_letterSingleFragment,bundle);
                         }));
             }
         });

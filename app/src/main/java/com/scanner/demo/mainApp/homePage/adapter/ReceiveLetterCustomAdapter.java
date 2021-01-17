@@ -50,7 +50,7 @@ public class ReceiveLetterCustomAdapter extends RecyclerView.Adapter<ReceiveLett
             holder.itemLetterBinding.cardLetter.setCardBackgroundColor(context.getResources().getColor(R.color.purple));
         }
         holder.itemLetterBinding.cardLetter.setOnClickListener(View -> {
-            onClickLetterListener.onClickLetterListenetAdapter(listReceive.get(position).getActionId());
+            onClickLetterListener.onClickLetterListenetAdapter(listReceive.get(position).getId(),listReceive.get(position).getActionId());
         });
     }
 

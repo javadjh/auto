@@ -10,13 +10,10 @@ import com.scanner.demo.mainApp.kartable.upsertLetter.model.UpsertResponse;
 import com.scanner.demo.mainApp.kartable.upsertLetter.model.UsersResponseRoot;
 import com.scanner.demo.mainApp.letterSingle.model.LetterSingleRoot;
 import com.scanner.demo.mainApp.letterSingle.model.TrackRoot;
-
-import java.io.File;
-import java.util.List;
+import com.scanner.demo.mainApp.letterSingle.action.model.ActionBody;
 
 import io.reactivex.rxjava3.core.Single;
 import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -62,4 +59,7 @@ public interface APIInterface {
 
     @POST("/api/v2/letter/upsert")
     Single<UpsertResponse> upsertLetter(@Body UpsertLetterRoot upsertLetterRoot);
+
+    @POST("/api/v2/letter/action")
+    Single<UpsertResponse> actionLetter(@Body ActionBody actionBody);
 }

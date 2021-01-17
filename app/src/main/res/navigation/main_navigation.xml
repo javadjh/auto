@@ -154,6 +154,9 @@
         <action
             android:id="@+id/action_letterSingleFragment_to_showFileFragment"
             app:destination="@id/showFileFragment" />
+        <action
+            android:id="@+id/action_letterSingleFragment_to_actionLetterFragment"
+            app:destination="@id/actionLetterFragment" />
     </fragment>
     <fragment
         android:id="@+id/upsertLetterFragment"
@@ -227,5 +230,14 @@
         <action
             android:id="@+id/action_choiseFileBootomSheet_to_mainActivity"
             app:destination="@id/mainActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/actionLetterFragment"
+        android:name="com.scanner.demo.mainApp.letterSingle.action.view.ActionLetterFragment"
+        android:label="fragment_action_letter"
+        tools:layout="@layout/fragment_action_letter" >
+        <action
+            android:id="@+id/action_actionLetterFragment_to_letterSingleFragment"
+            app:destination="@id/letterSingleFragment" />
     </fragment>
 </navigation>

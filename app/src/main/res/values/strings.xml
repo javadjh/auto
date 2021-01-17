@@ -47,4 +47,7 @@
     <string name="senderAddLetter">ارسال کننده</string>
     <string name="send">ارسال</string>
     <string name="draft">پیشنویس</string>
+    <string name="SendToOnotherPeople">ارجاع نامه</string>
+    <string name="addUser">افزودن کاربر</string>
+    <string name="addFile">افزودن فایل</string>
 </resources>

@@ -24,14 +24,16 @@ public class LetterSinleVM extends BaseObservable {
     //main variable
     private LetterSingleRoot letterSingleRoot;
     private String letterId;
+    private String actionId;
     //context and mutable
     private Context context;
     private MutableLiveData<LetterSingleRoot> singleRootMutableLiveData = new MutableLiveData<>();
     private MutableLiveData<TrackRoot> trackRootMutableLiveData = new MutableLiveData<>();
 
     //cons
-    public LetterSinleVM(Context context, String letterId) {
+    public LetterSinleVM(Context context, String actionId,String letterId) {
         this.context = context;
+        this.actionId = actionId;
         this.letterId = letterId;
         getSinlgeData();
     }
@@ -39,8 +41,8 @@ public class LetterSinleVM extends BaseObservable {
     //logic
     private void getSinlgeData() {
         letterService letterService = new letterService(context);
-        singleRootMutableLiveData = letterService.getSingleLetter(letterId);
-        trackRootMutableLiveData = letterService.getTrack("d5cc768e-c75a-4a65-a009-0bd1c08b5640");
+        singleRootMutableLiveData = letterService.getSingleLetter(actionId);
+        trackRootMutableLiveData = letterService.getTrack(letterId);
         notifyPropertyChanged(BR.singleRootMutableLiveData);
         notifyPropertyChanged(BR.trackRootMutableLiveData);
     }
@@ -50,6 +52,7 @@ public class LetterSinleVM extends BaseObservable {
     public static void setProfileImage(CircleImageView circleImageView,String url) {
         Picasso.get().load(url).into(circleImageView);
     }
+
 
     //getter and setter
     @Bindable

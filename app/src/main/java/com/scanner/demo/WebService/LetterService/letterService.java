@@ -13,6 +13,7 @@ import com.scanner.demo.WebService.APIClient;
 import com.scanner.demo.mainApp.kartable.model.DraftResponseRoot;
 import com.scanner.demo.mainApp.kartable.upsertLetter.model.UpsertLetterRoot;
 import com.scanner.demo.mainApp.kartable.upsertLetter.model.UpsertResponse;
+import com.scanner.demo.mainApp.letterSingle.action.model.ActionBody;
 import com.scanner.demo.mainApp.letterSingle.model.LetterSingleRoot;
 import com.scanner.demo.mainApp.letterSingle.model.TrackRoot;
 
@@ -34,7 +35,7 @@ public class letterService extends ViewModel {
     private MutableLiveData<DraftResponseRoot> draftResponseRootMutableLiveData = new MutableLiveData<>();
     //getTrack
     private MutableLiveData<TrackRoot> trackRootMutableLiveData = new MutableLiveData<>();
-    //upsertLetter
+    //upsertLetter And Action
     private MutableLiveData<UpsertResponse> upsertResponseMutableLiveData = new MutableLiveData<>();
     APIClient apiClient;
     Context context;
@@ -174,6 +175,25 @@ public class letterService extends ViewModel {
         return upsertResponseMutableLiveData;
     }
 
+    //action
+    public MutableLiveData<UpsertResponse> action(ActionBody actionBody){
+        apiClient = new APIClient();
+        compositeDisposable.add(apiClient.ACTION(actionBody)
+        .subscribeOn(Schedulers.newThread())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribeWith(new DisposableSingleObserver<UpsertResponse>() {
+            @Override
+            public void onSuccess(@NonNull UpsertResponse upsertResponse) {
+                upsertResponseMutableLiveData.setValue(upsertResponse);
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
+                Log.i("error",e.toString());
+            }
+        }));
+        return  upsertResponseMutableLiveData;
+    }
 
     @Override
     protected void onCleared() {

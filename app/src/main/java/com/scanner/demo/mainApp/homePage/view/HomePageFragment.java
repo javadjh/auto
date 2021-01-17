@@ -47,8 +47,9 @@ public class HomePageFragment extends Fragment {
                 receiveLetterVM.setData(receiveLetterRoot.getData());
                 fragmentHomePageBinding.setReceiveLetterVM(receiveLetterVM);
                 fragmentHomePageBinding.recyReceiveLetter.setAdapter(new ReceiveLetterCustomAdapter(receiveLetterRoot.getData().getList(), getContext(),
-                        letterId -> {
+                        (letterId, actionId) -> {
                             Bundle bundle = new Bundle();
+                            bundle.putString("actionId",actionId);
                             bundle.putString("id",letterId);
                             bundle.putString("key","home");
                             Navigation.findNavController(fragmentHomePageBinding.recyReceiveLetter).navigate(R.id.action_homePageFragment_to_letterSingleFragment,bundle);

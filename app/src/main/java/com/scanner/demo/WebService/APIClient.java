@@ -8,10 +8,10 @@ import com.scanner.demo.mainApp.kartable.model.DraftResponseRoot;
 import com.scanner.demo.mainApp.kartable.upsertLetter.model.UpsertLetterRoot;
 import com.scanner.demo.mainApp.kartable.upsertLetter.model.UpsertResponse;
 import com.scanner.demo.mainApp.kartable.upsertLetter.model.UsersResponseRoot;
+import com.scanner.demo.mainApp.letterSingle.action.model.ActionBody;
 import com.scanner.demo.mainApp.letterSingle.model.LetterSingleRoot;
 import com.scanner.demo.mainApp.letterSingle.model.TrackRoot;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory;
@@ -87,6 +87,9 @@ public class APIClient  {
     }
     public Single<UpsertResponse> UPSERT_LETTER(UpsertLetterRoot upsertLetterRoot){
         return apiInterface.upsertLetter(upsertLetterRoot);
+    }
+    public Single<UpsertResponse> ACTION(ActionBody actionBody){
+        return apiInterface.actionLetter(actionBody);
     }
 
 }
