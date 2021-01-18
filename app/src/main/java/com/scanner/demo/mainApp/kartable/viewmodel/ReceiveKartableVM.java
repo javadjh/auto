@@ -1,14 +1,22 @@
 package com.scanner.demo.mainApp.kartable.viewmodel;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
+import androidx.databinding.BindingAdapter;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.scanner.demo.BR;
+import com.scanner.demo.R;
 import com.scanner.demo.WebService.LetterService.letterService;
+import com.scanner.demo.mainApp.homePage.adapter.ReceiveLetterCustomAdapter;
 import com.scanner.demo.mainApp.homePage.model.ReceiveLetterRoot;
 import com.scanner.demo.mainApp.kartable.searchKartable.model.OnEventListtenerReceive;
 

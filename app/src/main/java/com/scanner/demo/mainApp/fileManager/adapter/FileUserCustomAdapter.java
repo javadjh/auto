@@ -46,7 +46,8 @@ public class FileUserCustomAdapter extends RecyclerView.Adapter<FileUserCustomAd
         holder.itemFileBinding.imageFileType.setImageResource(fileTypePicker.fileTypePickerMethod(context,fileListList.get(position).getFileType()));
         holder.itemFileBinding.cardDownloadFile.setOnClickListener(View->{
             FileService fileService = new FileService(context);
-            fileService.getFile(fileListList.get(position).getId());
+            fileService.getFile(fileListList.get(position).getId(),fileListList.get(position).getTitle(),
+                    fileListList.get(position).getFileType());
         });
     }
 

@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.scanner.demo.CustomClass.downloadFile;
 import com.scanner.demo.WebService.APIClient;
 
 import java.io.File;
@@ -31,7 +32,7 @@ public class FileService {
     }
 
     //downloadFile
-    public void getFile(String id){
+    public void getFile(String id,String name,String ex){
         apiClient = new APIClient();
         compositeDisposable.add(apiClient.GET_FILE(id)
         .subscribeOn(Schedulers.newThread())
@@ -39,7 +40,7 @@ public class FileService {
         .subscribeWith(new DisposableSingleObserver<ResponseBody>() {
             @Override
             public void onSuccess(@NonNull ResponseBody body) {
-
+                downloadFile.writeResponseBodyToDisk(context,body,name,ex);
             }
 
             @Override
