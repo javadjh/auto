@@ -64,6 +64,8 @@
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
                 <TextView
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:textSize="@dimen/titleSize"
                     android:gravity="start"
                     android:layout_gravity="start"

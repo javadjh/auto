@@ -2,6 +2,7 @@ package com.scanner.demo.mainApp.homePage.model;
 
 import androidx.databinding.BindingAdapter;
 
+import com.scanner.demo.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -32,7 +33,11 @@ public class ListLetter {
     //setProfile
     @BindingAdapter("android:setProfileLetterList")
     public static void setProfile(CircleImageView circleImageView,String url){
-        Picasso.get().load(url).into(circleImageView);
+        if(url==null) {
+            circleImageView.setImageResource(R.drawable.ic_baseline_person_pin_24);
+        }else {
+            Picasso.get().load(url).into(circleImageView);
+        }
     }
 
     public String getId() {

@@ -1,5 +1,6 @@
 package com.scanner.demo.WebService;
 
+import com.scanner.demo.CustomClass.Token;
 import com.scanner.demo.mainApp.fileManager.model.FileManagerModelResponseRoot;
 import com.scanner.demo.mainApp.homePage.model.ReceiveLetterRoot;
 import com.scanner.demo.loginPage.model.LoginModelBody;
@@ -27,7 +28,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APIClient  {
-    public static final String BASE_URL = "http://192.168.1.33:5000";
+    public static final String BASE_URL = "http://37.32.46.12:4000";
     Retrofit retrofit = null;
     APIInterface apiInterface;
     public APIClient(){
@@ -37,7 +38,7 @@ public class APIClient  {
             public Response intercept(Chain chain) throws IOException {
                 Request newRequest  = chain.request().newBuilder()
 
-                        .addHeader("Authorization", " Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtb2hhbW1hZCIsImp0aSI6IjlkZTFjYjEzLWIyMDctNDg1ZS1hN2Y3LTAyYTZlYzA2ODdkNSIsInVuaXF1ZV9uYW1lIjoibW9oYW1tYWQiLCJpZCI6IjgwMzIzMGNlLWNlOTUtNDgwOC1iNGQ4LWJlMDAzMThjZmNjNiIsIm5iZiI6MTYwOTQxNzU1NywiZXhwIjoxNjExNDkxMTU3LCJpYXQiOjE2MDk0MTc1NTd9.pWlCbrSWOSZNmFQ709v-GyHV9YrjrzIlewVENvoLehI")
+                        .addHeader("Authorization", " Bearer " + Token.token)
                         .build();
                 return chain.proceed(newRequest);
             }
